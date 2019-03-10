@@ -582,6 +582,11 @@ function drop(ev) {
     trgpersonid_ = ev.target.id;
     playSound();
 
+    if( srcpersonid_ == trgpersonid_) {
+        console.log("Cannot chat with self!");
+        return;
+    }
+
     if(!AlreadyChatted(srcpersonid_, trgpersonid_)) {
         //alert((Persons[srcperson].messageGot);
         //alert((Persons[trgperson].messageGot);
