@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Game for Gossip Math Problem</title>
+    <title>The Gossip Problem</title>
     <link href="../contents/app.css" rel="stylesheet" />
     <link href="../contents/app.js" rel="" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -16,14 +16,14 @@
         crossorigin="anonymous"></script>
 
     <header class="container-fluid">
-        <h1>Gossip Math Problem</h1>
+        <h1>Gossip Problem</h1>
     </header>
 
     <div class="container-fluid">
         <div class="row">
             <section class="col-sm-9">
                 <div class = "row">
-                    <h4 class="col-sm-6">Total chats: <span id="Counter">0</span></h4>
+                    <h4 class="col-sm-6">Talks done: <span id="Counter">0</span></h4>
                     <h4 class="col-sm-6">Time spent: <span id="HowLong">0</span> seconds</h4>
                 </div>
                 <p id="playarea"></p>
@@ -35,17 +35,17 @@
             </section>
             <aside class="col-sm-3">
                 <h3 class="title">Options</h3>
-                <p>Use slider to choose how many gossips</p>
+                <p>Amount of Gossips:</p>
                 <div class="slidecontainer">
                     <input type="range" min="2" max="8" value="2" class="slider" id="myRange" onchange="updateSlider(this.value)">
                 </div>
                 <p>Gossips: <span id="gossipnum">2</span></p>
-                Please choose the actor:
+                Choose a character:
                 <select class="selectpicker" id="mySelect" onchange="UpdateActor()">
-                    <option value="actor1">actor1</option>
-                    <option value="actor2">actor2</option>
-                    <option value="actor3">actor3</option>
-                    <option value="actor4">actor4</option>
+                    <option value="actor1">Person 1</option>
+                    <option value="actor2">Little Boy</option>
+                    <option value="actor3">Little Little Boy</option>
+                    <option value="actor4">Little Girl</option>
                 </select>
 
                 <audio id = "backaudio" controls autoplay>
