@@ -162,7 +162,9 @@ a.done-fixed {
   }
 
   #intro {
-      background-color: darkkhaki;
+      background-color: #3e8e41;
+      color: white;
+      font-size: large;
   }
 
   #audio {
