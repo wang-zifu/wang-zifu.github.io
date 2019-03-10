@@ -132,7 +132,7 @@ a.done-fixed {
 
  .logo {
      position: relative;
-     left: 50px;
+     left: 10px;
  }
 
  .btn-group_v button {
@@ -173,14 +173,14 @@ a.done-fixed {
 
 
 p.instruction {
-    color: black;
+    color: darkblack;
     font-size: larger;
 
 }
 
 p.instruction_f {
     font-weight: bold;
-    color: red;
+    color: darkred;
     font-size: x-large;
 
 }
