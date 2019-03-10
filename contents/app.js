@@ -1,5 +1,5 @@
 currentActor = "actor1.jpg";
-currentNumOfActor = 5;
+currentNumOfActor = 2;
 Persons = [];
 Positions = [];
 totalChat = 0;
