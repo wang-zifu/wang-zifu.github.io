@@ -1,0 +1,6 @@
+Everyone knows one piece of information unique to them, 
+and everyone wants to know everything.
+
+We implemented a computer game to challenge you to exchange information
+in a group in the fewest chats possible.
+

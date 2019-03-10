@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Game for Gossip Math Problem</title>
+    <link href="../contents/app.css" rel="stylesheet" />
+    <link href="../contents/app.js" rel="" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script src="../contents/app.js" type="application/javascript"></script>
+</head>
+
+<body bgcolor="#E6E6FA" onload="onLoad()">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <header class="container-fluid">
+        <h1>Gossip Math Problem</h1>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <section class="col-sm-9">
+                <div class = "row">
+                    <h4 class="col-sm-6">Total chats: <span id="Counter">0</span></h4>
+                    <h4 class="col-sm-6">Time spent: <span id="HowLong">0</span> seconds</h4>
+                </div>
+                <p id="playarea"></p>
+                <div class="row">
+                    <a class="btn btn-primary btn-lg undo-fixed" onclick="Undo()">Undo</a>
+                    <a class="btn btn-success  btn-lg done-fixed" onclick="Verify()">Check</a>
+                </div>
+
+            </section>
+            <aside class="col-sm-3">
+                <h3 class="title">Options</h3>
+                <p>Use slider to choose how many gossips</p>
+                <div class="slidecontainer">
+                    <input type="range" min="2" max="8" value="5" class="slider" id="myRange" onchange="updateSlider(this.value)">
+                </div>
+                <p>Gossips: <span id="gossipnum">5</span></p>
+                Please choose the actor:
+                <select class="selectpicker" id="mySelect" onchange="UpdateActor()">
+                    <option value="actor1">actor1</option>
+                    <option value="actor2">actor2</option>
+                    <option value="actor3">actor3</option>
+                    <option value="actor4">actor4</option>
+                </select>
+
+                <audio id = "backaudio" controls autoplay>
+                    <source src="music.ogg" type="audio/ogg">
+                    <source src="../contents/music.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+
+                <audio id="dropAudio">
+                    <source src="horse.ogg" type="audio/ogg">
+                    <source src="../contents/click.mav" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <div class="btn-group_v">
+                    <button type="button" class="btn btn-primary btn-lg" onclick="GetInstructions()">Instruction</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick=Solution()>Solution</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick=SolutionExplanation()>Solution Explanation</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="Reset()">Reset</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="window.open('../index.html', '_self')">Home</button>
+                </div>
+
+
+            </aside>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
