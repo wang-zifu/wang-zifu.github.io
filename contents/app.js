@@ -199,8 +199,8 @@ function generateHTML(persons) {
 
     htmltext = "";
     for(i = 0; i < len; i++) {
-        //htmltext += "<img class = \"actorimg\" src = " + persons[i].image  + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" " + "onmouseover='ShowChats(this.id)' onmouseout='HideChats(this.id)'" + "/>"
-        htmltext += "<img class = \"actorimg\" src = " + persons[i].image  + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" />"
+        htmltext += "<img class = \"actorimg\" src = " + persons[i].image  + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" " + "onmouseover='ShowChats(this.id)' onmouseout='HideChats(this.id)'" + "/>"
+        //htmltext += "<img class = \"actorimg\" src = " + persons[i].image  + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" />"
         htmltext += "<label class = \"actorlabel\" id = \"label_" + i + "\">1</label>";
         /*
         style = "\"position:absolute; left: " + Positions[i].x + "; top: " + Positions[i].y + "; width: 30; height: 40;\"";
@@ -859,16 +859,16 @@ function GetInstructions()
 
 function ShowChats(personid)
 {
-    return;
+//    return;
     index = getPersonIndex(personid);
     
-    len = Persons[index].chated.length;
+    len = Persons[index].messageGot.length;
 
     for(i = 0; i < len; i++) {
         var lb = document.createElement("label");
-        var t = document.createTextNode(Persons[index].chated[i]);     
+        var t = document.createTextNode("Gossip " + Persons[index].messageGot[i]);
         lb.appendChild(t);
-        lb.style.color = 'yellow'
+        lb.style.color = 'yellow';
         lb.style.backgroundColor = "green";
         lb.style.position = "fixed";
         x = Positions[index].x + imagewidth + 10;
