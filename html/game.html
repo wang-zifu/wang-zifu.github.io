@@ -5,16 +5,12 @@
 <head>
     <title>The Gossip Problem</title>
     <link href="../contents/app.css" rel="stylesheet" />
-    <link href="../contents/app.js" rel="" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
     <script src="../contents/app.js" type="application/javascript"></script>
+
+    <link href="../contents/bootstrap.css" rel="stylesheet">
 </head>
 
 <body bgcolor="#E6E6FA" onload="onLoad()">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-
     <header class="container-fluid">
         <h1>Gossip Problem</h1>
     </header>
@@ -22,7 +18,7 @@
     <div class="container-fluid">
         <div class="row">
             <section class="col-sm-9">
-                <div class = "row">
+                <div class="row">
                     <h4 class="col-sm-6">Talks done: <span id="Counter">0</span></h4>
                     <h4 class="col-sm-6">Time spent: <span id="HowLong">0</span> seconds</h4>
                 </div>
@@ -39,7 +35,8 @@
                 <div class="slidecontainer">
                     <input type="range" min="2" max="8" value="2" class="slider" id="myRange" onchange="updateSlider(this.value)">
                 </div>
-                <p>Gossips: <span id="gossipnum">2</span></p>
+
+                <p>Gossips: <span id="gossipnum">5</span></p>
                 Choose a character:
                 <select class="selectpicker" id="mySelect" onchange="UpdateActor()">
                     <option value="actor1">Person 1</option>
@@ -48,7 +45,7 @@
                     <option value="actor4">Little Girl</option>
                 </select>
 
-                <audio id = "backaudio" controls autoplay>
+                <audio id="backaudio" controls autoplay>
                     <source src="music.ogg" type="audio/ogg">
                     <source src="../contents/miimusic.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
@@ -64,7 +61,8 @@
                 <div class="btn-group_v">
                     <button type="button" class="btn btn-primary btn-lg" onclick="GetInstructions()">Instruction</button>
                     <button type="button" class="btn btn-primary btn-lg" onclick=Solution()>Solution</button>
-                    <button type="button" class="btn btn-primary btn-lg" onclick=SolutionExplanation()>Solution Explanation</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick=SolutionExplanation()>Solution
+                        Explanation</button>
                     <button type="button" class="btn btn-primary btn-lg" onclick="Reset()">Reset</button>
                     <button type="button" class="btn btn-primary btn-lg" onclick="window.open('../index.html', '_self')">Home</button>
                 </div>
