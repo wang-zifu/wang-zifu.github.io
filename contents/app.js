@@ -525,7 +525,7 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     Persons[srcperson].history.push(Persons[srcperson].messagenum);
     Persons[trgperson].history.push(Persons[trgperson].messagenum);
 
-    /*
+    
     //console.log("trg-messageGot-before-push", Persons[trgperson].messageGotHistory)
     //console.log("Persons[trgperson].messageGot", Persons[trgperson].messageGot);
     Persons[trgperson].messageGotHistory.push(Persons[trgperson].messageGot);
@@ -535,7 +535,7 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     //console.log("Persons[srcperson].messageGot", Persons[srcperson].messageGot);
     Persons[srcperson].messageGotHistory.push(Persons[srcperson].messageGot);
     //console.log("src-messageGot-after push", Persons[srcperson].messageGotHistory)
-    */
+    
     
     ////alert((Persons[srcperson].messageGotHistory);
     ////alert((Persons[trgperson].messageGotHistory);
@@ -544,7 +544,7 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     //    messagenum = parseInt(Persons[srcperson].messagenum) + parseInt(Persons[trgperson].messagenum);
     //} else 
 
-    messagenum = parseInt(Persons[srcperson].messagenum) + parseInt(Persons[trgperson].messagenum);
+    //messagenum = parseInt(Persons[srcperson].messagenum) + parseInt(Persons[trgperson].messagenum);
     /*
     {
         //console.log(Persons[srcperson].messageGot);
@@ -565,7 +565,7 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
 
     //union = GetUnion(Persons[srcperson].messageGot, Persons[trgperson].messageGot);
     
-    /*
+    
     var union = Persons[srcperson].messageGot.concat(Persons[trgperson].messageGot.filter(function (item) {
         return Persons[srcperson].messageGot.indexOf(item) < 0;
     }));
@@ -577,7 +577,7 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     //console.log(Persons[trgperson].messageGot);
     //console.log("new message got", union);
     messagenum = union.length;
-    */
+    
 
     if (messagenum > currentNumOfActor) {
         messagenum = currentNumOfActor;
@@ -916,7 +916,7 @@ function GetInstructions() {
 
 
 function ShowChats(personid) {
-    return;
+    //return;
     index = getPersonIndex(personid);
 
     len = Persons[index].messageGot.length;
@@ -939,7 +939,7 @@ function ShowChats(personid) {
 }
 
 function HideChats(persionid) {
-    return;
+    //return;
     for (i = 0; i < chatedElements.length; i++) {
         element = chatedElements[i];
         element.parentNode.removeChild(element);
