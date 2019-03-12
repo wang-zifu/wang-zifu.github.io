@@ -525,7 +525,7 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     Persons[srcperson].history.push(Persons[srcperson].messagenum);
     Persons[trgperson].history.push(Persons[trgperson].messagenum);
 
-    
+    /*
     //console.log("trg-messageGot-before-push", Persons[trgperson].messageGotHistory)
     //console.log("Persons[trgperson].messageGot", Persons[trgperson].messageGot);
     Persons[trgperson].messageGotHistory.push(Persons[trgperson].messageGot);
@@ -535,7 +535,7 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     //console.log("Persons[srcperson].messageGot", Persons[srcperson].messageGot);
     Persons[srcperson].messageGotHistory.push(Persons[srcperson].messageGot);
     //console.log("src-messageGot-after push", Persons[srcperson].messageGotHistory)
-
+    */
     
     ////alert((Persons[srcperson].messageGotHistory);
     ////alert((Persons[trgperson].messageGotHistory);
