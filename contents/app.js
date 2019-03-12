@@ -544,6 +544,7 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     //    messagenum = parseInt(Persons[srcperson].messagenum) + parseInt(Persons[trgperson].messagenum);
     //} else 
 
+    messagenum = parseInt(Persons[srcperson].messagenum) + parseInt(Persons[trgperson].messagenum);
     /*
     {
         //console.log(Persons[srcperson].messageGot);
@@ -564,6 +565,7 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
 
     //union = GetUnion(Persons[srcperson].messageGot, Persons[trgperson].messageGot);
     
+    /*
     var union = Persons[srcperson].messageGot.concat(Persons[trgperson].messageGot.filter(function (item) {
         return Persons[srcperson].messageGot.indexOf(item) < 0;
     }));
@@ -575,9 +577,10 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     //console.log(Persons[trgperson].messageGot);
     //console.log("new message got", union);
     messagenum = union.length;
+    */
 
     if (messagenum > currentNumOfActor) {
-        //messagenum = currentNumOfActor;
+        messagenum = currentNumOfActor;
     }
 
     Persons[srcperson].messagenum = messagenum;
@@ -913,7 +916,7 @@ function GetInstructions() {
 
 
 function ShowChats(personid) {
-    //    return;
+    return;
     index = getPersonIndex(personid);
 
     len = Persons[index].messageGot.length;
@@ -936,6 +939,7 @@ function ShowChats(personid) {
 }
 
 function HideChats(persionid) {
+    return;
     for (i = 0; i < chatedElements.length; i++) {
         element = chatedElements[i];
         element.parentNode.removeChild(element);
