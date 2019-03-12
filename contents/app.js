@@ -19,6 +19,7 @@ Elapsed = 0;
 var mytimer;
 
 chatedElements = [];
+timeidlist = [];
 
 
 colors = ['#0048BA', 'yellow', 'red', 'blue', 'white', 'Orange', 'Pink', 'Purple',
@@ -300,7 +301,7 @@ function AlertMessageGot() {
 }
 
 function Reset() {
-    clearTimeout(mytimer);
+    ClearAllTimers();
     for (i = 0; i < lineElements.length; i++) {
         element = lineElements[i];
         element.parentNode.removeChild(element);
@@ -368,7 +369,6 @@ function PlayMusic() {
 }
 
 function onLoad() {
-    //setTimeout(PlayMusic, 2000);
     currentNumOfActor = parseInt(document.getElementById("myRange").value);
     updateGossipNum(currentNumOfActor);
     Reset();
@@ -502,6 +502,7 @@ union = []
 function GetUnion(messageArr1, messageArr2) {
     union = []
 
+    //union = messageArr1;
     for (i = 0; i < messageArr1.length; i++) {
         union.push(messageArr1[i]);
     }
@@ -687,28 +688,26 @@ function drop(ev) {
     }
 }
 
-function DoNothing() {
-    //alert("delayed");
+function DelayedMakeAChat(delayed, src, trg)
+{
+    timid = setTimeout(MakeAChat, delayed * 1000, src, trg);
+    timeidlist.push(timid);
 }
 
-function delay(ms) {
-    return;
-    var cur_d = new Date();
-    var cur_ticks = cur_d.getTime();
-    var ms_passed = 0;
-    while (ms_passed < ms) {
-        console.log("ms_passed/ms", ms_passed, ms);
-        var d = new Date(); // Possible memory leak?
-        var ticks = d.getTime();
-        ms_passed = ticks - cur_ticks;
-        // d = null;  // Prevent memory leak?
+function ClearAllTimers()
+{
+    clearTimeout(mytimer);
+    for(i = 0; i< timeidlist.length; i++) {
+        clearTimeout(timeidlist[i]);
     }
+    timeidlist = [];
 }
 
 function Solution() {
     console.log("1111");
     Elapsed = 0;
-    clearTimeout(mytimer);
+    ClearAllTimers();
+
     UpdateLabelText("HowLong", Elapsed, "red");
 
     console.log("2222");
@@ -725,30 +724,37 @@ function Solution() {
         //element.outerHTML = "";
     }
 
+
+    for(i = 0; i < Persons.length; i++) {
+        Persons[i].messageGot = [i];
+        Persons[i].messageGotHistory = [];
+        Persons[i].history = [];
+        Persons[i].messagenum = 1;
+        UpdateCounter(i);
+    }
+
     console.log("4444");
     totalChat = 0;
     lineElements = [];
     lineLabelElements = [];
     Pairs = []
 
+    delayed = 1;
+    offsetdelayed = 2;
+
     console.log("5555");
     console.log("currentNumOfActor", currentNumOfActor);
     if (currentNumOfActor == 2) {
-        MakeAChat("Person_0", "Person_1");
-        setTimeout(DoNothing, delaymsecs);
-        delay(delaymsecs);
+        DelayedMakeAChat(delayed, "Person_0", "Person_1");
     } else if (currentNumOfActor == 3) {
-        MakeAChat("Person_0", "Person_1");
-        setTimeout(DoNothing, delaymsecs);
-        delay(delaymsecs);
+        DelayedMakeAChat(delayed, "Person_0", "Person_1");
+        delayed += offsetdelayed;
 
-        MakeAChat("Person_2", "Person_1");
-        setTimeout(DoNothing, delaymsecs);
-        delay(delaymsecs);
+        DelayedMakeAChat(delayed, "Person_2", "Person_1");
+        delayed += offsetdelayed;
 
-        MakeAChat("Person_0", "Person_2");
-        setTimeout(DoNothing, delaymsecs);
-        delay(delaymsecs);
+        DelayedMakeAChat(delayed, "Person_0", "Person_2");
+        delayed += offsetdelayed;
     } else {
         console.log("6666");
         if (currentNumOfActor > 4) {
@@ -759,31 +765,23 @@ function Solution() {
                 srcperson = "Person_" + i.toString();
                 trgperson = "Person_" + (i - 1).toString();
                 
-                MakeAChat(srcperson, trgperson);
-                
-                /*
-                setTimeout(DoNothing, delaymsecs);
-                delay(delaymsecs);
-                */
+                DelayedMakeAChat(delayed, srcperson, trgperson);
+                delayed += offsetdelayed;
             }
         }
 
         console.log("9999");
-        MakeAChat("Person_3", "Person_2");
-        setTimeout(DoNothing, delaymsecs);
-        delay(delaymsecs);
+        DelayedMakeAChat(delayed, "Person_3", "Person_2");
+        delayed += offsetdelayed;
 
-        MakeAChat("Person_1", "Person_0");
-        setTimeout(DoNothing, delaymsecs);
-        delay(delaymsecs);
+        DelayedMakeAChat(delayed, "Person_1", "Person_0");
+        delayed += offsetdelayed;
 
-        MakeAChat("Person_1", "Person_2");
-        setTimeout(DoNothing, delaymsecs);
-        delay(delaymsecs);
+        DelayedMakeAChat(delayed, "Person_1", "Person_2");
+        delayed += offsetdelayed;
 
-        MakeAChat("Person_0", "Person_3");
-        setTimeout(DoNothing, delaymsecs);
-        delay(delaymsecs);
+        DelayedMakeAChat(delayed, "Person_0", "Person_3");
+        delayed += offsetdelayed;
 
         console.log("AAAA");
         
@@ -791,9 +789,8 @@ function Solution() {
             for (i = currentNumOfActor - 1; i > 3; i--) {
                 console.log("AAAA", i);
                 srcperson = "Person_" + i.toString();
-                MakeAChat(srcperson, "Person_0");
-                setTimeout(DoNothing, delaymsecs);
-                delay(delaymsecs);
+                DelayedMakeAChat(delayed, srcperson, "Person_0");
+                delayed += offsetdelayed;
             }
         }
         
