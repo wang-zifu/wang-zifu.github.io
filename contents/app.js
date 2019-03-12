@@ -1,5 +1,5 @@
 currentActor = "actor1.jpg";
-currentNumOfActor = 2;
+currentNumOfActor = 5;
 Persons = [];
 Positions = [];
 totalChat = 0;
@@ -28,7 +28,7 @@ function generateColorLabels()
 {
     for(i = 0; i < colors.length; i++) {
         var lb = document.createElement("label");
-        var t = document.createTextNode("Chat" + (i+1).toString() + " ");     
+        var t = document.createTextNode("Talk" + (i+1).toString() + " ");     
         lb.appendChild(t);
         lb.style.color = colors[i];
         lb.style.backgroundColor = "green";
@@ -333,6 +333,7 @@ function PlayMusic()
 
 function onLoad() {
     //setTimeout(PlayMusic, 2000);
+    currentNumOfActor = parseInt(document.getElementById("myRange").value);
     Reset();
 }
 
@@ -376,7 +377,7 @@ function CreateLabelForChat(x, y)
 {
     console.log("label x/y/totalChat", x, y, totalChat);
     var lb = document.createElement("label");
-    var t = document.createTextNode("Chat " + (totalChat + 1).toString() + " ");     
+    var t = document.createTextNode("Talk" + (totalChat + 1).toString() + " ");     
     lb.appendChild(t);
     color = "red";
     if(totalChat < colors.length) {
