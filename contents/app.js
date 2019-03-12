@@ -497,6 +497,8 @@ function UpdateCounter(personid) {
     UpdateLabelText(id, counter, color);
 }
 
+union = []
+
 function GetUnion(messageArr1, messageArr2) {
     union = []
 
@@ -519,39 +521,60 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     srcperson = getPersonIndex(srcpersonid);
     trgperson = getPersonIndex(trgpersonid);
 
+
     Persons[srcperson].history.push(Persons[srcperson].messagenum);
     Persons[trgperson].history.push(Persons[trgperson].messagenum);
 
-    console.log("trg-messageGot-before-push", Persons[trgperson].messageGotHistory)
-    console.log("Persons[trgperson].messageGot", Persons[trgperson].messageGot);
+    
+    //console.log("trg-messageGot-before-push", Persons[trgperson].messageGotHistory)
+    //console.log("Persons[trgperson].messageGot", Persons[trgperson].messageGot);
     Persons[trgperson].messageGotHistory.push(Persons[trgperson].messageGot);
-    console.log("trg-messageGot-after-push", Persons[trgperson].messageGotHistory)
+    //console.log("trg-messageGot-after-push", Persons[trgperson].messageGotHistory)
 
-    console.log("src-messageGot-before push", Persons[srcperson].messageGotHistory)
-    console.log("Persons[srcperson].messageGot", Persons[srcperson].messageGot);
+    //console.log("src-messageGot-before push", Persons[srcperson].messageGotHistory)
+    //console.log("Persons[srcperson].messageGot", Persons[srcperson].messageGot);
     Persons[srcperson].messageGotHistory.push(Persons[srcperson].messageGot);
-    console.log("src-messageGot-after push", Persons[srcperson].messageGotHistory)
+    //console.log("src-messageGot-after push", Persons[srcperson].messageGotHistory)
 
-
+    
     ////alert((Persons[srcperson].messageGotHistory);
     ////alert((Persons[trgperson].messageGotHistory);
 
     //if(false) {
     //    messagenum = parseInt(Persons[srcperson].messagenum) + parseInt(Persons[trgperson].messagenum);
     //} else 
+
+    /*
     {
-        console.log(Persons[srcperson].messageGot);
-        console.log(Persons[trgperson].messageGot);
+        //console.log(Persons[srcperson].messageGot);
+        //console.log(Persons[trgperson].messageGot);
         //alert("UpdatePersonChat-1");
         //AlertMessageGot();
         union = GetUnion(Persons[srcperson].messageGot, Persons[trgperson].messageGot);
+        console.log(union);
         //alert("UpdatePersonChat-2");
         //AlertMessageGot();
-        console.log(Persons[srcperson].messageGot);
-        console.log(Persons[trgperson].messageGot);
-        console.log("new message got", union);
+        //console.log(Persons[srcperson].messageGot);
+        //console.log(Persons[trgperson].messageGot);
+        //console.log("new message got", union);
         messagenum = union.length;
     }
+    */
+    
+
+    //union = GetUnion(Persons[srcperson].messageGot, Persons[trgperson].messageGot);
+    
+    var union = Persons[srcperson].messageGot.concat(Persons[trgperson].messageGot.filter(function (item) {
+        return Persons[srcperson].messageGot.indexOf(item) < 0;
+    }));
+
+    console.log("uniuon", union);
+    //alert("UpdatePersonChat-2");
+    //AlertMessageGot();
+    //console.log(Persons[srcperson].messageGot);
+    //console.log(Persons[trgperson].messageGot);
+    //console.log("new message got", union);
+    messagenum = union.length;
 
     if (messagenum > currentNumOfActor) {
         //messagenum = currentNumOfActor;
@@ -567,6 +590,9 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
 
     Persons[srcperson].chated.push(trgpersonid);
     Persons[trgperson].chated.push(srcpersonid);
+
+    union= []
+    
 }
 
 function AlreadyChatted(srcpersonid, trgpersonid) {
@@ -618,12 +644,13 @@ function MakeAChat(src, trg) {
 
     lineElements.push(lineele);
 
-    console.log("AlreadyChatted");
+    console.log("AlreadyChatted-1");
     //    alert("UpdatePersonChat");
     //    AlertMessageGot();
 
     UpdatePersonChat(src, trg);
     totalChat += 1;
+    console.log("Update Counter!");
     UpdateLabelText("Counter", totalChat, "red");
 
 }
@@ -652,7 +679,8 @@ function drop(ev) {
         console.log("srcperson", srcperson);
         trgperson = ev.target.id;
         MakeAChat(srcpersonid_, trgpersonid_);
-
+    } else {
+        console.log(srcpersonid_, trgpersonid_, "Already chated!");
     }
 }
 
@@ -661,6 +689,7 @@ function DoNothing() {
 }
 
 function delay(ms) {
+    return;
     var cur_d = new Date();
     var cur_ticks = cur_d.getTime();
     var ms_passed = 0;
@@ -674,27 +703,32 @@ function delay(ms) {
 }
 
 function Solution() {
+    console.log("1111");
     Elapsed = 0;
     clearTimeout(mytimer);
     UpdateLabelText("HowLong", Elapsed, "red");
 
+    console.log("2222");
     for (i = 0; i < lineElements.length; i++) {
         element = lineElements[i];
         element.parentNode.removeChild(element);
         //element.outerHTML = "";
     }
 
+    console.log("3333");
     for (i = 0; i < lineLabelElements.length; i++) {
         element = lineLabelElements[i];
         element.parentNode.removeChild(element);
         //element.outerHTML = "";
     }
 
+    console.log("4444");
     totalChat = 0;
     lineElements = [];
     lineLabelElements = [];
     Pairs = []
 
+    console.log("5555");
     console.log("currentNumOfActor", currentNumOfActor);
     if (currentNumOfActor == 2) {
         MakeAChat("Person_0", "Person_1");
@@ -713,16 +747,25 @@ function Solution() {
         setTimeout(DoNothing, delaymsecs);
         delay(delaymsecs);
     } else {
+        console.log("6666");
         if (currentNumOfActor > 4) {
+            console.log("7777");
             for (i = currentNumOfActor - 1; i > 3; i--) {
+                console.log("8888", i);
+                
                 srcperson = "Person_" + i.toString();
                 trgperson = "Person_" + (i - 1).toString();
+                
                 MakeAChat(srcperson, trgperson);
+                
+                /*
                 setTimeout(DoNothing, delaymsecs);
                 delay(delaymsecs);
+                */
             }
         }
 
+        console.log("9999");
         MakeAChat("Person_3", "Person_2");
         setTimeout(DoNothing, delaymsecs);
         delay(delaymsecs);
@@ -739,14 +782,19 @@ function Solution() {
         setTimeout(DoNothing, delaymsecs);
         delay(delaymsecs);
 
+        console.log("AAAA");
+        
         if (currentNumOfActor > 4) {
             for (i = currentNumOfActor - 1; i > 3; i--) {
+                console.log("AAAA", i);
                 srcperson = "Person_" + i.toString();
                 MakeAChat(srcperson, "Person_0");
                 setTimeout(DoNothing, delaymsecs);
                 delay(delaymsecs);
             }
         }
+        
+        console.log("BBBB");
 
     }
 
