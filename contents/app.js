@@ -199,7 +199,8 @@ function generateHTML(persons) {
 
     htmltext = "";
     for(i = 0; i < len; i++) {
-        htmltext += "<img class = \"actorimg\" src = " + persons[i].image  + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" " + "onmouseover='ShowChats(this.id)' onmouseout='HideChats(this.id)'" + "/>"
+        //htmltext += "<img class = \"actorimg\" src = " + persons[i].image  + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" " + "onmouseover='ShowChats(this.id)' onmouseout='HideChats(this.id)'" + "/>"
+        htmltext += "<img class = \"actorimg\" src = " + persons[i].image  + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" />"
         htmltext += "<label class = \"actorlabel\" id = \"label_" + i + "\">1</label>";
         /*
         style = "\"position:absolute; left: " + Positions[i].x + "; top: " + Positions[i].y + "; width: 30; height: 40;\"";
@@ -263,6 +264,20 @@ function UpdateElapsed()
     mytimer = setTimeout(UpdateElapsed, 1000);
 }
 
+function DisplayMessageGot()
+{
+    for(i=0; i < Persons.length; i++) {
+        console.log(i, " messageGot", Persons[i].messageGot);
+    }
+}
+
+function AlertMessageGot()
+{
+    for(i=0; i < Persons.length; i++) {
+        alert(Persons[i].messageGot);
+    }
+}
+
 function Reset()
 {
     clearTimeout(mytimer);
@@ -302,6 +317,8 @@ function Reset()
 
     setTimeout(UpdateElapsed, 1000);
 
+    console.log("on load");
+    DisplayMessageGot();
 }
 
 function fetchVideoAndPlay() {
@@ -334,6 +351,7 @@ function PlayMusic()
 function onLoad() {
     //setTimeout(PlayMusic, 2000);
     currentNumOfActor = parseInt(document.getElementById("myRange").value);
+    updateGossipNum(currentNumOfActor);
     Reset();
 }
 
@@ -434,6 +452,8 @@ function getElementRect(id) {
 
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
+    console.log("on drag");
+    DisplayMessageGot();
 }
 
 
@@ -463,9 +483,14 @@ function UpdateCounter(personid)
 
 function GetUnion(messageArr1, messageArr2)
 {
-    union = messageArr1;
+    union = []
+
+    for(i = 0; i < messageArr1.length; i++) {
+        union.push(messageArr1[i]);
+    }
+    
     for(i = 0; i < messageArr2.length; i++) {
-        if(!messageArr1.includes(messageArr2[i])) {
+        if(!union.includes(messageArr2[i])) {
             union.push(messageArr2[i]);
         }
     }
@@ -474,16 +499,11 @@ function GetUnion(messageArr1, messageArr2)
 }
 
 function UpdatePersonChat(srcpersonid, trgpersonid) {
+    //alert("UpdatePersonChat");
+    //AlertMessageGot();
     srcperson = getPersonIndex(srcpersonid);
     trgperson = getPersonIndex(trgpersonid);
-    /*
-    //alert((Persons[srcperson].messagenum);
-    //alert((Persons[trgperson].messagenum);
-    //alert((Persons[srcperson].messageGot);
-    //alert((Persons[trgperson].messageGot);
-    //alert((Persons[srcperson].messageGotHistory);
-    //alert((Persons[trgperson].messageGotHistory);
-*/
+
     Persons[srcperson].history.push(Persons[srcperson].messagenum);
     Persons[trgperson].history.push(Persons[trgperson].messagenum);
 
@@ -501,26 +521,34 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     ////alert((Persons[srcperson].messageGotHistory);
     ////alert((Persons[trgperson].messageGotHistory);
 
-    messagenum = parseInt(Persons[srcperson].messagenum) + parseInt(Persons[trgperson].messagenum);
-    /*
-    union = GetUnion(Persons[srcperson].messageGot, Persons[trgperson].messageGot);
-    console.log("new message got", union);
-    messagenum = union.length;
-    */
+    //if(false) {
+    //    messagenum = parseInt(Persons[srcperson].messagenum) + parseInt(Persons[trgperson].messagenum);
+    //} else 
+    {
+        console.log(Persons[srcperson].messageGot);
+        console.log(Persons[trgperson].messageGot);
+        //alert("UpdatePersonChat-1");
+        //AlertMessageGot();
+        union = GetUnion(Persons[srcperson].messageGot, Persons[trgperson].messageGot);
+        //alert("UpdatePersonChat-2");
+        //AlertMessageGot();
+        console.log(Persons[srcperson].messageGot);
+        console.log(Persons[trgperson].messageGot);
+        console.log("new message got", union);
+        messagenum = union.length;
+    }
+
     if(messagenum > currentNumOfActor) {
-        messagenum = currentNumOfActor;
+        //messagenum = currentNumOfActor;
     }
 
     Persons[srcperson].messagenum = messagenum;
-    //Persons[srcperson].messageGot = union; 
+    Persons[srcperson].messageGot = union; 
     UpdateCounter(srcperson);
 
     Persons[trgperson].messagenum = messagenum;
-    //Persons[trgperson].messageGot = union;
+    Persons[trgperson].messageGot = union;
     UpdateCounter(trgperson);
-
-    ////alert((Persons[srcperson].messageGot );
-    ////alert((Persons[trgperson].messageGot );
 
     Persons[srcperson].chated.push(trgpersonid);
     Persons[trgperson].chated.push(srcpersonid);
@@ -528,6 +556,9 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
 
 function AlreadyChatted(srcpersonid, trgpersonid) 
 {
+    console.log("AlreadyChatted");
+    //AlertMessageGot();
+   
     srcperson = getPersonIndex(srcpersonid);
     trgperson = getPersonIndex(trgpersonid);
     console.log("Pairs", Pairs);
@@ -555,7 +586,10 @@ function AlreadyChatted(srcpersonid, trgpersonid)
 
 function MakeAChat(src, trg)
 {
-    console.log("MakeAchat", src, trg);
+    //alert("MakeAchat");
+    console.log("AlreadyChatted");
+    //AlertMessageGot();
+
     srcRect = getElementRect(src);
     trgRect = getElementRect(trg);
     left_ = srcRect.left + imagexoffset;
@@ -568,6 +602,10 @@ function MakeAChat(src, trg)
 
     lineElements.push(lineele);
 
+    console.log("AlreadyChatted");
+//    alert("UpdatePersonChat");
+//    AlertMessageGot();
+
     UpdatePersonChat(src, trg);
     totalChat += 1;
     UpdateLabelText("Counter", totalChat, "red");
@@ -576,12 +614,17 @@ function MakeAChat(src, trg)
 
 
 function drop(ev) {
+    console.log("on drop");
+    //AlertMessageGot();
+   
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     srcpersonid_ = data;
     console.log("srcperson", srcpersonid_);
     trgpersonid_ = ev.target.id;
     playSound();
+    console.log("play sound");
+    //AlertMessageGot();
 
     if( srcpersonid_ == trgpersonid_) {
         console.log("Cannot chat with self!");
@@ -589,9 +632,6 @@ function drop(ev) {
     }
 
     if(!AlreadyChatted(srcpersonid_, trgpersonid_)) {
-        //alert((Persons[srcperson].messageGot);
-        //alert((Persons[trgperson].messageGot);
-
         srcperson = data;
         console.log("srcperson", srcperson);
         trgperson = ev.target.id;
