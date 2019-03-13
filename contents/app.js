@@ -761,8 +761,8 @@ function Solution() {
     lineLabelElements = [];
     Pairs = []
 
-    delayed = 1 * 1000;
     offsetdelayed = parseInt(currentSolutionSpeed);
+    delayed = offsetdelayed;    //1 * 1000;
 
     console.log("5555");
     console.log("currentNumOfActor", currentNumOfActor);
