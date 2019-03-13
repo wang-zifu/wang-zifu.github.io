@@ -762,7 +762,7 @@ function Solution() {
     Pairs = []
 
     offsetdelayed = parseInt(currentSolutionSpeed);
-    delayed = offsetdelayed;    //1 * 1000;
+    delayed = 300;  //offsetdelayed;    //1 * 1000;
 
     console.log("5555");
     console.log("currentNumOfActor", currentNumOfActor);
