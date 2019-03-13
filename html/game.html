@@ -37,6 +37,14 @@
                 </div>
 
                 <p>Gossips: <span id="gossipnum">5</span></p>
+
+                <p>Speed of solution:</p>
+                <div class="slidecontainer">
+                    <input type="range" min="50" max="5000" value="1000" class="slider" id="mysolution" onchange="updateSolutionSlider(this.value)">
+                </div>
+
+                <p>Speed of solution: <span id="solutionspeed">5</span> ms</p>
+
                 Choose a character:
                 <select class="selectpicker" id="mySelect" onchange="UpdateActor()">
                     <option value="actor1">Person 1</option>
