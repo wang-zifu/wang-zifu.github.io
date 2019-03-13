@@ -1,5 +1,6 @@
 currentActor = "actor1.jpg";
 currentNumOfActor = 5;
+currentSolutionSpeed = 1000;
 Persons = [];
 Positions = [];
 totalChat = 0;
@@ -20,6 +21,11 @@ var mytimer;
 
 chatedElements = [];
 timeidlist = [];
+
+function setSolutionSpeed(SolutionSpeed)
+{
+    currentSolutionSpeed = SolutionSpeed
+}
 
 
 colors = ['#0048BA', 'yellow', 'red', 'blue', 'white', 'Orange', 'Pink', 'Purple',
@@ -371,6 +377,10 @@ function PlayMusic() {
 function onLoad() {
     currentNumOfActor = parseInt(document.getElementById("myRange").value);
     updateGossipNum(currentNumOfActor);
+
+    currentSolutionSpeed = parseInt(document.getElementById("mysolution").value);
+    updateSolutionSpeed(currentSolutionSpeed);
+
     Reset();
 }
 
@@ -378,10 +388,21 @@ function updateGossipNum(num) {
     document.getElementById("gossipnum").innerHTML = num.toString();
 }
 
+function updateSolutionSpeed(num) {
+    document.getElementById("solutionspeed").innerHTML = num.toString();
+}
+
 function updateSlider(slideAmount) {
     setcurrentactorNum(slideAmount);
     updateGossipNum(slideAmount);
     Reset();
+}
+
+function updateSolutionSlider(slideAmount) {
+    //alert(slideAmount);
+    setSolutionSpeed(slideAmount);
+    //alert(currentSolutionSpeed);
+    updateSolutionSpeed(slideAmount);
 }
 
 function UpdateActor() {
@@ -690,7 +711,8 @@ function drop(ev) {
 
 function DelayedMakeAChat(delayed, src, trg)
 {
-    timid = setTimeout(MakeAChat, delayed * 1000, src, trg);
+    console.log("DelayedMakeAChat", delayed);
+    timid = setTimeout(MakeAChat, delayed, src, trg);
     timeidlist.push(timid);
 }
 
@@ -739,8 +761,8 @@ function Solution() {
     lineLabelElements = [];
     Pairs = []
 
-    delayed = 1;
-    offsetdelayed = 2;
+    delayed = 1 * 1000;
+    offsetdelayed = parseInt(currentSolutionSpeed);
 
     console.log("5555");
     console.log("currentNumOfActor", currentNumOfActor);
