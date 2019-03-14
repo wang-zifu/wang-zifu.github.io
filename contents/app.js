@@ -134,12 +134,6 @@ function generateOne_TwoPositon(num, left, top, width, height, align = 0) {
             };
             Positions.push(position);
             //////alert((("ssss");
-            position = {
-                x: left + xo,
-                y: top + hh + yo
-            };
-            Positions.push(position);
-            //////alert((("tttt");
         } else {
             position = {
                 x: left + xo,
@@ -191,37 +185,37 @@ function generatePositions(num) {
 
         case 4:
             generateOne_TwoPositon(1, left_, top_, halfwidth, halfheight, 0);
-            generateOne_TwoPositon(1, left_ + halfwidth, top_, halfwidth, halfheight, 0);
             generateOne_TwoPositon(1, left_, top_ + halfheight, halfwidth, halfheight);
             generateOne_TwoPositon(1, left_ + halfwidth, top_ + halfheight, halfwidth, halfheight);
+            generateOne_TwoPositon(1, left_ + halfwidth, top_, halfwidth, halfheight, 0);
             return;
 
         case 5:
             generateOne_TwoPositon(2, left_, top_, halfwidth, halfheight, 0);
-            generateOne_TwoPositon(1, left_ + halfwidth, top_, halfwidth, halfheight, 0);
             generateOne_TwoPositon(1, left_, top_ + halfheight, halfwidth, halfheight, 0);
             generateOne_TwoPositon(1, left_ + halfwidth, top_ + halfheight, halfwidth, halfheight, 0);
+            generateOne_TwoPositon(1, left_ + halfwidth, top_, halfwidth, halfheight, 0);
             return;
 
         case 6:
             generateOne_TwoPositon(2, left_, top_, halfwidth, halfheight, 0);
-            generateOne_TwoPositon(2, left_ + halfwidth, top_, halfwidth, halfheight, 1);
             generateOne_TwoPositon(1, left_, top_ + halfheight, halfwidth, halfheight, 0);
             generateOne_TwoPositon(1, left_ + halfwidth, top_ + halfheight, halfwidth, halfheight, 0);
+            generateOne_TwoPositon(2, left_ + halfwidth, top_, halfwidth, halfheight, 1);
             return;
 
         case 7:
             generateOne_TwoPositon(2, left_, top_, halfwidth, halfheight, 0);
-            generateOne_TwoPositon(2, left_ + halfwidth, top_, halfwidth, halfheight, 1);
             generateOne_TwoPositon(2, left_, top_ + halfheight, halfwidth, halfheight, 0);
             generateOne_TwoPositon(1, left_ + halfwidth, top_ + halfheight, halfwidth, halfheight, 0);
+            generateOne_TwoPositon(2, left_ + halfwidth, top_, halfwidth, halfheight, 1);
             return;
 
         case 8:
             generateOne_TwoPositon(2, left_, top_, halfwidth, halfheight, 0);
-            generateOne_TwoPositon(2, left_ + halfwidth, top_, halfwidth, halfheight, 1);
             generateOne_TwoPositon(2, left_, top_ + halfheight, halfwidth, halfheight, 0);
             generateOne_TwoPositon(2, left_ + halfwidth, top_ + halfheight, halfwidth, halfheight, 1);
+            generateOne_TwoPositon(2, left_ + halfwidth, top_, halfwidth, halfheight, 1);
             return;
 
         default:
