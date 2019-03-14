@@ -104,8 +104,12 @@ a.done-fixed {
 }
 
 #playarea {
+    /*
     width: 1160px;
     height: 540px;
+    */
+    width: 100%;
+    height: 100%;
     background-color: #3e8e41;
     z-index: -1;
 }
