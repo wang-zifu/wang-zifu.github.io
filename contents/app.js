@@ -347,7 +347,7 @@ function Reset() {
 
     generateColorLabels();
 
-    setTimeout(UpdateElapsed, 1000);
+    mytimer = setTimeout(UpdateElapsed, 1000);
 
     console.log("on load");
     DisplayMessageGot();
