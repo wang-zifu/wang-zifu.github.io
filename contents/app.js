@@ -134,6 +134,12 @@ function generateOne_TwoPositon(num, left, top, width, height, align = 0) {
             };
             Positions.push(position);
             //////alert((("ssss");
+            position = {
+                x: left + xo,
+                y: top + hh + yo
+            };
+            Positions.push(position);
+            //////alert((("tttt");
         } else {
             position = {
                 x: left + xo,
