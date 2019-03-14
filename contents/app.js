@@ -36,6 +36,7 @@ colors = ['#0048BA', 'yellow', 'red', 'blue', 'white', 'Orange', 'Pink', 'Purple
 ];
 
 function generateColorLabels() {
+    return;
     for (i = 0; i < colors.length; i++) {
         var lb = document.createElement("label");
         var t = document.createTextNode("Talk" + (i + 1).toString() + " ");
@@ -595,6 +596,7 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     var union = Persons[srcperson].messageGot.concat(Persons[trgperson].messageGot.filter(function (item) {
         return Persons[srcperson].messageGot.indexOf(item) < 0;
     }));
+    
 
     console.log("uniuon", union);
     //alert("UpdatePersonChat-2");
