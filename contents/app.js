@@ -22,6 +22,9 @@ var mytimer;
 chatedElements = [];
 timeidlist = [];
 
+state = 0 //0: Reset 1: solution
+
+
 function setSolutionSpeed(SolutionSpeed)
 {
     currentSolutionSpeed = SolutionSpeed
@@ -307,6 +310,7 @@ function AlertMessageGot() {
 }
 
 function Reset() {
+    state = 0;
     ClearAllTimers();
     for (i = 0; i < lineElements.length; i++) {
         element = lineElements[i];
@@ -726,6 +730,7 @@ function ClearAllTimers()
 }
 
 function Solution() {
+    state = 1;
     console.log("1111");
     Elapsed = 0;
     ClearAllTimers();
@@ -823,6 +828,11 @@ function Solution() {
 }
 
 function Verify() {
+    if(state == 1) {
+        alert("The answer is not yours!;)");
+        return;
+    }
+
     for (i = 0; i < currentNumOfActor; i++) {
         if (Persons[i].messagenum < currentNumOfActor) {
             alert("Not finished, please continue!");
