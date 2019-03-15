@@ -144,8 +144,8 @@ a.done-fixed {
 
 .btn-group_v button {
     position: relative;
-    left: 80px;
-    top: 30px;
+    left: 10%;
+    top: 10%;
 
     background-color: #4CAF50;
     /* Green background */
@@ -153,11 +153,11 @@ a.done-fixed {
     /* Green border */
     color: white;
     /* White text */
-    padding: 20px 50px;
+    padding: 5%;
     /* Some padding */
     cursor: pointer;
     /* Pointer/hand icon */
-    width: 50%;
+    width: 80%;
     /* Set a width if needed */
     display: block;
     /* Make the buttons appear below each other */
