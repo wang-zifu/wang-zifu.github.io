@@ -982,6 +982,7 @@ function HideChats(persionid) {
 
 
 function DragEnter(event) {
+    event.preventDefault();    
     event.target.style.border = "5px dotted red";    
 }
 
