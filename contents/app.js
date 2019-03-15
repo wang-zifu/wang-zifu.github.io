@@ -982,11 +982,15 @@ function HideChats(persionid) {
 
 
 function DragEnter(event) {
-    event.preventDefault();    
+    event.preventDefault();
+    event.stopPropagation(); // stop it here to prevent it bubble up
+
     event.target.style.border = "5px dotted red";    
 }
 
 
 function DragLeave(event) {
+    event.stopPropagation(); // stop it here to prevent it bubble up
+
     event.target.style.border = "";    
 }
