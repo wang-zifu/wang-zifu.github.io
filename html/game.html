@@ -17,10 +17,12 @@
 
     <script>
         // options are optional ;)
-        MobileDragDrop.polyfill({
-            // use this to make use of the scroll behaviour
-            dragImageTranslateOverride: MobileDragDrop.scrollBehaviourDragImageTranslateOverride
-        });
+        if (typeof MobileDragDrop !== 'undefined') {        
+            MobileDragDrop.polyfill({
+                // use this to make use of the scroll behaviour
+                dragImageTranslateOverride: MobileDragDrop.scrollBehaviourDragImageTranslateOverride
+            });
+        }
     </script>   
 
 </head>
