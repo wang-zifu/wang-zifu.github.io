@@ -235,7 +235,7 @@ function generateHTML(persons) {
 
     htmltext = "";
     for (i = 0; i < len; i++) {
-        htmltext += "<img class = \"actorimg\" src = " + persons[i].image + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" " + "onmouseover='ShowChats(this.id)' onmouseout='HideChats(this.id)' ondragenter='DragEnter(event)' ondragleave='DragLeave(event)' " + "/>"
+        htmltext += "<img class = \"actorimg\" src = " + persons[i].image + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" " + "onmouseover='ShowChats(this.id)' onmouseout='HideChats(this.id)' ondragenter='DragEnter(event)' ondragleave='DragLeave(event)' ondragover='DragOver(event)' ondragexit='DragExit(event)' " + "/>"
         //htmltext += "<img class = \"actorimg\" src = " + persons[i].image  + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" />"
         htmltext += "<label class = \"actorlabel\" id = \"label_" + i + "\">1</label>";
         /*
@@ -993,4 +993,14 @@ function DragLeave(event) {
     event.stopPropagation(); // stop it here to prevent it bubble up
 
     event.target.style.border = "";    
+}
+
+function DragOver(event) {
+    event.stopPropagation(); // stop it here to prevent it bubble up
+    event.preventDefault(); // allows us to drop
+    event.dataTransfer.dropEffect = 'link'; // we have to set it for firefox to be happy      
+}
+
+function DragExit(event) {
+    event.stopPropagation(); // stop it here to prevent it bubble up
 }
