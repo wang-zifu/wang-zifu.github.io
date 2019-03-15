@@ -235,7 +235,7 @@ function generateHTML(persons) {
 
     htmltext = "";
     for (i = 0; i < len; i++) {
-        htmltext += "<img class = \"actorimg\" src = " + persons[i].image + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" " + "onmouseover='ShowChats(this.id)' onmouseout='HideChats(this.id)'" + "/>"
+        htmltext += "<img class = \"actorimg\" src = " + persons[i].image + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" " + "onmouseover='ShowChats(this.id)' onmouseout='HideChats(this.id)' ondragenter='DragEnter(event)' ondragleave='DragLeave(event)' " + "/>"
         //htmltext += "<img class = \"actorimg\" src = " + persons[i].image  + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" />"
         htmltext += "<label class = \"actorlabel\" id = \"label_" + i + "\">1</label>";
         /*
@@ -978,4 +978,14 @@ function HideChats(persionid) {
     }
 
     chatedElements = [];
+}
+
+
+function DragEnter(event) {
+    event.target.style.border = "5px dotted red";    
+}
+
+
+function DragLeave(event) {
+    event.target.style.border = "";    
 }
