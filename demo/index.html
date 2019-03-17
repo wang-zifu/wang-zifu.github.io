@@ -153,6 +153,49 @@
             }, 250);
         });
 
+        /**
+         * ---------------------------------------------------------------------------------------------------------
+         */
+         var innerBin = document.querySelector('#innerBin');
+        bin.classList.add('zoom');
+        addEvent(innerBin, 'dragenter', function (e) {
+            console.log('apperture dragenter');
+            e.preventDefault();
+            e.stopPropagation(); // stop it here to prevent it bubble up
+            bin.classList.add('in');
+        });
+        addEvent(innerBin, 'dragover', function (e) {
+            console.log('apperture dragover');
+            e.preventDefault(); // allows us to drop
+            e.stopPropagation(); // stop it here to prevent it bubble up
+            e.dataTransfer.dropEffect = 'copy';
+        });
+        addEvent(innerBin, 'dragexit', function (e) {
+            console.log('apperture dragexit');
+            e.stopPropagation(); // stop it here to prevent it bubble up
+            bin.classList.remove('in');
+        });
+        addEvent(innerBin, 'dragleave', function (e) {
+            console.log('apperture dragleave');
+            e.stopPropagation(); // stop it here to prevent it bubble up
+            bin.classList.remove('in');
+        });
+        addEvent(innerBin, 'drop', function (e) {
+            console.log('apperture drop');
+            e.stopPropagation(); // stop it here to prevent it bubble up
+            bin.classList.remove('in');
+            var el = document.getElementById(e.dataTransfer.getData('Text'));
+            el.parentNode.removeChild(el);
+            // stupid nom text + fade effect
+            yum.innerHTML = eat[parseInt(Math.random() * eat.length)];
+            var y = yum.cloneNode(true);
+            bin.appendChild(y);
+            setTimeout(function () {
+                y.classList.add('fadeout');
+            }, 250);
+        });
+
+
         // workaround for iOS10/iOS11 touchmove behaviour (https://github.com/timruffles/mobile-drag-drop/issues/77)
         try {
             window.addEventListener('touchmove', function () {
