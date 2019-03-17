@@ -8,8 +8,8 @@ lineElements = [];
 Pairs = []
 labelElements = []
 
-imagewidth = 60;
-imageheight = 70;
+imagewidth = 100;
+imageheight = 120;
 imagexoffset = imagewidth / 2;
 imageyoffset = imageheight / 2;
 delaymsecs = 10;
@@ -693,7 +693,7 @@ function drop(ev) {
 
     ev.preventDefault();
     ev.stopPropagation();
-    
+
     var data = ev.dataTransfer.getData("text");
     srcpersonid_ = data;
     console.log("srcperson", srcpersonid_);
