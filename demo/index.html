@@ -38,30 +38,7 @@
 
     <script>
 
-        var threshold = 10;
-        var startX, startY;
-
-
-        var polyfillApplied = MobileDragDrop.polyfill({
-//            dragImageCenterOnTouch: true,
-//            dragImageOffset: {
-//                x: 0,
-//                y: 0
-//            },
-//            dragStartConditionOverride: allowHorizontalDragOnly,
-//            defaultActionOverride: alertAction,
-            dragImageTranslateOverride: MobileDragDrop.scrollBehaviourDragImageTranslateOverride,
-            // holdToDrag: 300
-        });
-
-        var appliedMessageEl = document.getElementById("appliedMessage");
-        var appliedMessage = "Polyfill inactive: Current browser was detected to handle drag'n'drop quite well on its own ;)";
-        if (polyfillApplied) {
-
-            appliedMessage = "Polyfill activated: Detected current browser not capable of HTML5 drag'n'drop (or somebody set forceApply is to true)";
-        }
-        appliedMessageEl.innerHTML = appliedMessage;
-
+        
         /**
          * ---------------------------------------------------------------------------------------------------------
          */
