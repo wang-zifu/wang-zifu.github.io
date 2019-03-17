@@ -701,6 +701,43 @@ function MakeAChat(src, trg) {
 }
 
 
+function showResult()
+{
+    if (currentNumOfActor == 2) {
+        if (totalChat > 2) {
+            alert("You are done, but not good enough!");
+        } else {
+            message = "Congratulations, you made it in " + Elapsed + " seconds!";
+            alert(message);
+        }
+    } else if (currentNumOfActor == 3) {
+        if (totalChat > 3) {
+            alert("You are done, But not good enough!");
+        } else {
+            message = "Congratulations, you made it in " + Elapsed + " seconds!";
+            alert(message);
+        }
+    } else {
+        if (totalChat <= currentNumOfActor * 2 - 4) {
+            message = "Congratulations, you made it in " + Elapsed + " seconds!";
+            alert(message);
+        } else {
+            alert("You are done, But not good enough!")
+        }
+    }
+}
+
+function MakeJudge() {
+    for (i = 0; i < currentNumOfActor; i++) {
+        if (Persons[i].messagenum < currentNumOfActor) {
+            return;
+        }
+    }
+
+    setTimeout(showResult, 200);
+}
+
+
 function drop(ev) {
     console.log("on drop");
     //AlertMessageGot();
@@ -726,6 +763,7 @@ function drop(ev) {
         console.log("srcperson", srcperson);
         trgperson = ev.target.id;
         MakeAChat(srcpersonid_, trgpersonid_);
+        MakeJudge();
     } else {
         console.log(srcpersonid_, trgpersonid_, "Already chated!");
     }
