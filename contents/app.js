@@ -8,8 +8,8 @@ lineElements = [];
 Pairs = []
 labelElements = []
 
-imagewidth = 100;
-imageheight = 120;
+imagewidth = 10;
+imageheight = 20;
 imagexoffset = imagewidth / 2;
 imageyoffset = imageheight / 2;
 delaymsecs = 10;
@@ -24,6 +24,17 @@ timeidlist = [];
 
 state = 0 //0: Reset 1: solution
 
+
+function  getImageWidthHeight()
+{
+    const element = document.querySelector('.actorimg');
+    style = window.getComputedStyle(element, null);
+    console.log("style", style);  
+    imagewidth = parseInt(style.width);
+    imageheight = parseInt(style.height);
+    imagexoffset = imagewidth / 2;
+    imageyoffset = imageheight / 2;
+}
 
 function setSolutionSpeed(SolutionSpeed)
 {
@@ -280,14 +291,16 @@ function geneartePersons(num, actor) {
     Persons = [];
     Positions = [];
     //debugger();
+    persons = generateGame(num, actor);
+    htmltext = generateHTML(persons);
+    document.getElementById("playarea").innerHTML = htmltext;
+    getImageWidthHeight();
     generatePositions(num);
     for (i = 0; i < Positions.length; i++) {
         console.log("position:x", Positions[i].x);
         console.log("position y", Positions[i].y);
     }
-    persons = generateGame(num, actor);
-    htmltext = generateHTML(persons);
-    document.getElementById("playarea").innerHTML = htmltext;
+
     Persons = persons;
     ReLocatePersons(num);
 }
@@ -311,6 +324,7 @@ function AlertMessageGot() {
 }
 
 function Reset() {
+
     state = 0;
     ClearAllTimers();
     for (i = 0; i < lineElements.length; i++) {

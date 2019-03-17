@@ -118,8 +118,8 @@ a.done-fixed {
     background-Color: 'transparent';
     opacity: 0.5;
     filter: alpha(opacity=50);
-    width: 100px;
-    height: 120px;
+    width: 70px;
+    height: 90px;
     position: fixed;
 }
 
