@@ -692,6 +692,8 @@ function drop(ev) {
     //AlertMessageGot();
 
     ev.preventDefault();
+    ev.stopPropagation();
+    
     var data = ev.dataTransfer.getData("text");
     srcpersonid_ = data;
     console.log("srcperson", srcpersonid_);
