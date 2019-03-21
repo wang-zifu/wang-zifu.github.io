@@ -3,17 +3,20 @@
 <html>
 
 <head>
-    <title>The Gossip Problem</title>
+    <title class="toTranslate"  i18nid="translateId-1">The Gossip Problem</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="contents/app.css" rel="stylesheet" />
-
+    <script src="contents/i18n.js"></script>
+    <script src="contents/app.js" type="application/javascript"></script>
+    <script src="contents/md5.min.js"></script>
     <link href="contents/bootstrap.css" rel="stylesheet">
 </head>
 
 
 
-<body>
+<body onload="onLoadHome()">
     <header class="container-fluid">
-        <h1>Welcome to Northshore Middle School MATH Day Event</h1>
+        <h1 class="toTranslate" i18nid="translateId-2">Welcome to Northshore Middle School MATH Day Event</h1>
     </header>
 
     <div class="container-fluid">
@@ -21,7 +24,7 @@
             <section class="col-sm-9">
                 <div class="row">
                     <article id="intro">
-                        <h1>Gossip Math Problem</h1>
+                        <h1  class="toTranslate"  i18nid="translateId-3">Gossip Math Problem</h1>
                         <div class="row">
                             <div class="col-sim-3">
                                 <img class="logo" src="images/Solution.png" width="300" height="300" />
@@ -56,20 +59,41 @@
                 <h2 class="title">Organizations</h2>
                 <ul id="Links">
                     <li><a href="https://northshore.nsd.org/" target="_blank">Northshore Middle School</a></li>
-                    <li><a href="https://www1.nsd.org/" target="_blank">Northshor School District</a></li>
+                    <li><a href="https://www1.nsd.org/" target="_blank">Northshore School District</a></li>
                 </ul>
 
                 <audio controls autoplay>
-                    <source src="horse.ogg" type="audio/ogg">
                     <source src="contents/kahoot.mp3" type="audio/mpeg">
+                    </source>
                     Your browser does not support the audio element.
                 </audio>
+
+                <div class="btn-group_v">
+                    <button type="button" class="btn btn-primary btn-lg" onclick="SetLanguage('en')">English</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="SetLanguage('cn')">Chinese</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="SetLanguage('jp')">Japanse</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="SetLanguage('fr')">France</button>
+                </div>
+
+                <div id="google_translate_element"></div>
+
+                <script type="text/javascript">
+                    function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({
+                            pageLanguage: 'en',
+                            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                        }, 'google_translate_element');
+                    }
+                </script>
+
+                <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
             </aside>
         </div>
     </div>
 
-    <a class="btn btn-success btn-fixed" href="html/game.html">Start</a>
+    <a class="btn btn-success btn-fixed" href = # onclick="StartGame()">Start</a>
+
 
 
 </body>
