@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en-US">
 
 <head>
     <title>The Gossip Problem</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">   
     <link href="../contents/app.css" rel="stylesheet" />
     <script src="../contents/app.js" type="application/javascript"></script>
+    <script src="../contents/md5.min.js"></script>
+    <script src="../contents/i18n.js"></script>
 
     <link href="../contents/bootstrap.css" rel="stylesheet">
 
@@ -23,13 +26,13 @@
                 dragImageTranslateOverride: MobileDragDrop.scrollBehaviourDragImageTranslateOverride
             });
         }
-    </script>   
+    </script>
 
 </head>
 
 <body bgcolor="#E6E6FA" onload="onLoad()" onresize="Reset()">
     <header class="container-fluid">
-        <h1>Gossip Problem</h1>
+        <h1 class="toTranslate"  i18nid="translateId-1">Gossip Problem</h1>
     </header>
 
     <div class="container-fluid">
@@ -42,7 +45,7 @@
                 <p id="playarea"></p>
                 <div class="row">
                     <a class="btn btn-primary btn-lg undo-fixed" onclick="Undo()">Undo</a>
-                    <a class="btn btn-success  btn-lg done-fixed" onclick="window.open('../index.html', '_self')">Home</a>
+                    <a class="btn btn-success  btn-lg done-fixed" onclick="ToHome()">Home</a>
                 </div>
 
             </section>
@@ -71,15 +74,15 @@
                 </select>
 
                 <audio id="backaudio" controls autoplay>
-                    <source src="music.ogg" type="audio/ogg">
                     <source src="../contents/miimusic.mp3" type="audio/mpeg">
+                    </source>
                     Your browser does not support the audio element.
                 </audio>
 
 
                 <audio id="dropAudio">
-                    <source src="horse.ogg" type="audio/ogg">
                     <source src="../contents/click.mav" type="audio/mpeg">
+                    </source>
                     Your browser does not support the audio element.
                 </audio>
 
@@ -97,6 +100,20 @@
 
         </div>
     </div>
+
+
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 

@@ -1,0 +1,89 @@
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-19 12:21-0700\n"
+"PO-Revision-Date: 2019-03-19 12:21:38.966493\n"
+"Last-Translator: potranslator 1.1.5\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Translated-By: potranslator 1.1.5\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
+
+#: instruction.html%2Bhtml.body.h1:10-5
+msgid "Instruction"
+msgstr "指令"
+
+#: instruction.html%2Bhtml.body.p:12-5
+msgid ""
+"Everyone knows one piece of information unique to them, and everyone wants "
+"to know everything."
+msgstr "每个人都知道他们独有的一条信息，每个人都想知道一切。"
+
+#: instruction.html%2Bhtml.body.p:14-5
+msgid ""
+"The goal of the game is to do this in the fewest moves possible. The amount "
+"of people you start with can be changed using the slider."
+msgstr "游戏的目标是尽可能少地采取行动。您可以使用滑块更改您开始使用的人数。"
+
+#: instruction.html%2Bhtml.body.p:18-5
+msgid ""
+"To actually play, you can drag and drop one person to another, which "
+"simulates a conversation between the two of them."
+msgstr "要实际播放，您可以将一个人拖放到另一个人，这可以模拟他们两个人之间的对话。"
+
+#: instruction.html%2Bhtml.body.p:21-5
+msgid ""
+"During this conversation,the two people involved will talk, exchanging all "
+"the information they already know, including information they acquired in "
+"other conversations."
+msgstr "在这次对话中，参与的两个人将交谈，交换他们已经知道的所有信息，包括他们在其他对话中获得的信息。"
+
+#: instruction.html%2Bhtml.body.p:25-5
+msgid ""
+"After a conversation between two people, a line will form between them, "
+"indicating that they've already conversed, meaning that they can't converse "
+"again."
+msgstr "在两个人之间进行对话之后，他们之间会形成一条线，表明他们已经交谈，这意味着他们无法再次交谈。"
+
+#: instruction.html%2Bhtml.body.p:28-5
+msgid ""
+"The number next to someone's picture indicates how much information someone "
+"knows, and hovering over it displays exactly what gossip the person knows, "
+"labeled by the gossip originator."
+msgstr "某人的照片旁边的数字表示有人知道多少信息，并且在其上方悬停显示该人知道的八卦，由八卦发起者标记。"
+
+#: instruction.html%2Bhtml.body.p:32-5
+msgid "Button \"Solution\": You can find the solution if you missed"
+msgstr "按钮“解决方案”：如果您错过了，可以找到解决方案"
+
+#: instruction.html%2Bhtml.body.p:36-5
+msgid ""
+"Button \"Solution Explanation\": You can find how the solution works and the"
+" prove"
+msgstr "按钮“解决方案说明”：您可以找到解决方案的工作原理和证明"
+
+#: instruction.html%2Bhtml.body.p:40-5
+msgid "Button \"Reset\": You can start new game"
+msgstr "按钮“重置”：您可以开始新游戏"
+
+#: instruction.html%2Bhtml.body.p:44-5
+msgid "Button \"Check\": You can check whether you made it"
+msgstr "按钮“检查”：您可以检查是否已成功"
+
+#: instruction.html%2Bhtml.body.p:48-5
+msgid "Button \"Undo\": You can undo if you want."
+msgstr "按钮“撤消”：您可以根据需要撤消。"
+
+#: instruction.html%2Bhtml.body.p:52-5
+msgid "The Slider: You can change how many peosons anticipant"
+msgstr "滑块：你可以改变多少peosons的预期"
+
+#: instruction.html%2Bhtml.body.p:56-5
+msgid "The drop-down list: You can choose the different actor."
+msgstr "下拉列表：您可以选择不同的actor。"
