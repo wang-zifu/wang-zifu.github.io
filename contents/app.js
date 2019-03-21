@@ -1,3 +1,7 @@
+//var googleapi = require('./googleapi.js');
+
+//import { i18nTranslate } from "./i18n.js"
+
 currentActor = "actor1.jpg";
 currentNumOfActor = 5;
 currentSolutionSpeed = 1000;
@@ -24,6 +28,28 @@ timeidlist = [];
 
 state = 0 //0: Reset 1: solution
 
+language = "en"
+
+function SetLanguage(lang)
+{
+    if( language == lang) {
+        return;
+    }
+
+    language = lang;
+
+    if(lang == 'en') {
+        location.reload();
+    } else { 
+        Localize();
+    }
+}
+
+function StartGame()
+{
+    url = 'html/game.html#' + language;
+    window.open(url);
+}
 
 function  getImageWidthHeight()
 {
@@ -365,6 +391,8 @@ function Reset() {
 
     console.log("on load");
     DisplayMessageGot();
+
+    Localize();
 }
 
 function fetchVideoAndPlay() {
@@ -393,7 +421,32 @@ function PlayMusic() {
 
 }
 
+function onLoadHome() {
+    var passhash = md5(language);
+    console.log("test md5 function:",passhash);
+    console.log("Language:", language);
+    language = window.location.hash;
+    if (language == "") {
+        language = 'en';
+    } else {
+        language = language.substr(1);
+    }
+    Localize();
+}
+
 function onLoad() {
+    language = window.location.hash;
+    if (language == "") {
+        language = 'en';
+    } else {
+        language = language.substr(1);
+    }
+
+    Translate(language, "good morning");
+
+    var passhash = md5(language);
+    console.log("test md5 function:",passhash);
+    console.log("Language:", language);
     currentNumOfActor = parseInt(document.getElementById("myRange").value);
     updateGossipNum(currentNumOfActor);
 
@@ -1057,4 +1110,42 @@ function DragOver(event) {
 
 function DragExit(event) {
     event.stopPropagation(); // stop it here to prevent it bubble up
+}
+
+function Translate(language, text)
+{
+    /*
+    try {
+        const res = translate(text, {from: 'en', to: language});
+    } catch(err) {
+
+    }
+    */
+   return i18nTranslate(language, text);
+}
+
+
+function GetLocalizedText(text)
+{
+    if (typeof(Storage) !== "undefined") {
+        // Code for localStorage/sessionStorage.
+        textmd5 = md5(text);
+        lsname = language + '.' + textmd5;
+        if (localStorage.lsname) {
+            return localStorage.getItem(lsname);
+        } else {
+            t_text = Translate(language, text);
+            localStorage.lsname = t_text;
+            return t_text;
+        }
+    } else {
+        // Sorry! No Web Storage support..
+        return text;
+    }    
+}
+
+function  ToHome()
+{
+    url = '../index.html#' + language; 
+    window.open(url, '_self')
 }

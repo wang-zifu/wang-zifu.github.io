@@ -201,3 +201,10 @@ p.instruction_f {
     font-size: x-large;
 
 }
+
+.arrow{
+    stroke:rgb(0,0,0);
+    stroke-width:2; 
+    marker-end:url(#markerArrow)
+  }
+  
