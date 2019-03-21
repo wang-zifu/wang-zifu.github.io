@@ -1048,7 +1048,8 @@ function SolutionExplanation() {
 
 function GetInstructions() {
     //return "<h1>Drag one person and drop on another person to complete a chat!</h1>";
-    basicPopup('instruction.html', 1000, 750);
+    url = 'instruction.html#' + language;
+    basicPopup(url, 1000, 750);
 }
 
 
