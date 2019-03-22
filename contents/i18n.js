@@ -103,7 +103,7 @@ var TranslationTable = {
     },
     "zh-CN": {
             "translateId-cc3cf15e1ecc24ea945e34b48151bf20" : "八卦问题" , //The Gossip Problem
-            "translateId-09517f9f315cf1a2144445aebe5fe173" : "欢迎来到Northshore中学数学日活动" , //Welcome to Northshore Middle School MATH Day Event
+            "translateId-09517f9f315cf1a2144445aebe5fe173" : "欢迎来到Northshore中学π Day活动" , //Welcome to Northshore Middle School MATH Day Event
             "translateId-ba915c166e1627fc4e914c33bd32b8b7" : "八卦数学问题" , //Gossip Math Problem
             "translateId-e88fd596db86a41e2fa599e0174e5dc5" : "有n个八卦，其中的每一个都知道一条不知道的其它信息。他们通过对话沟通，每当一个八卦会谈到另一个，他们告诉对方一切，他们知道在那个时候。每个八卦什么都知道之前有多少谈判需要？" , //There are n gossips, each of which knows one piece of information not known to the others. They communicate through conversations, and whenever one gossip talks to another, they tell each other all they know at that time. How many talks are required before each gossip knows everything?
             "translateId-19383ffd194efe470f3ad50a12423720" : "你可以<span style='color: yellow; font-size: x-large; font-weight: bold'>体验该游戏</span>，以完成挑战" , //You can <span style='color: yellow; font-size: x-large; font-weight: bold'>TRY THE GAME</span> to attempt to solve the problem.
