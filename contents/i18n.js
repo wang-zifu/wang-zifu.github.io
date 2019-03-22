@@ -146,7 +146,7 @@ var TranslationTable = {
             "translateId-4013f357da47076720842f1760a3ba1f" : "" , //The Slider: You can change how many peosons anticipant
             "translateId-8f949eb706f6dea7672b2fc4f02f25e5" : "" , //The drop-down list: You can choose the different actor.
             "translateId-6eb0edbaaa65f53398b62e1b05e70bd1" : "恭喜，您在{0}秒内完成了挑战！！！" , //"Congratulations, you made it in {0} seconds!"
-            "translateId-20718ecd1de527c9e133701551b5f455" : "虽然实现了目标，但是用了不必要的回话"
+            "translateId-20718ecd1de527c9e133701551b5f455" : "虽然实现了目标，但是进行了不必要的回话"
     },
     "es": {
             "translateId-cc3cf15e1ecc24ea945e34b48151bf20" : "" , //The Gossip Problem
