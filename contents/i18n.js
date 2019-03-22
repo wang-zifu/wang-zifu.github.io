@@ -106,11 +106,11 @@ var TranslationTable = {
             "translateId-09517f9f315cf1a2144445aebe5fe173" : "欢迎来到北岸中学数学日活动" , //Welcome to Northshore Middle School MATH Day Event
             "translateId-ba915c166e1627fc4e914c33bd32b8b7" : "八卦数学问题" , //Gossip Math Problem
             "translateId-e88fd596db86a41e2fa599e0174e5dc5" : "有n个八卦，其中的每一个都知道一条不知道的其它信息。他们通过对话沟通，每当一个八卦会谈到另一个，他们告诉对方一切，他们知道在那个时候。每个八卦什么都知道之前有多少谈判需要？" , //There are n gossips, each of which knows one piece of information not known to the others. They communicate through conversations, and whenever one gossip talks to another, they tell each other all they know at that time. How many talks are required before each gossip knows everything?
-            "translateId-19383ffd194efe470f3ad50a12423720" : "你可以<span style='color: yellow; font-size: x-large; font-weight: bold'>体验该游戏，以完成挑战" , //You can <span style='color: yellow; font-size: x-large; font-weight: bold'>TRY THE GAME</span> to attempt to solve the problem.
+            "translateId-19383ffd194efe470f3ad50a12423720" : "你可以<span style='color: yellow; font-size: x-large; font-weight: bold'>体验该游戏</span>，以完成挑战" , //You can <span style='color: yellow; font-size: x-large; font-weight: bold'>TRY THE GAME</span> to attempt to solve the problem.
             "translateId-82a09b9d442f67a6f71c5eed67c103fd" : "祝好运" , //Good luck!
             "translateId-fe8d31f91681817b4b1438c2933b8b75" : "组织" , //Organizations
-            "translateId-6b7ad5dfa7c95c16752e3c6a47c68d2b" : "北岸中学" , //Northshore Middle School
-            "translateId-052a29a8cd85b29ee832ec9771a11e6a" : "北岸学区" , //Northshore School District
+            "translateId-6b7ad5dfa7c95c16752e3c6a47c68d2b" : "Northshore中学" , //Northshore Middle School
+            "translateId-052a29a8cd85b29ee832ec9771a11e6a" : "Northshore学区" , //Northshore School District
             "translateId-78463a384a5aa4fad5fa73e2f506ecfc" : "英语" , //English
             "translateId-3b261136e3c33f35e0a58611b1f344cb" : "中文" , //Chinese
             "translateId-aad20e22eaaa854e576a4d92e38db2b9" : "日语" , //Japanse

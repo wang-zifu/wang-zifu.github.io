@@ -43,7 +43,7 @@ function SetLanguage(lang) {
 
 function StartGame() {
     url = 'html/game.html#' + language;
-    window.open(url);
+    window.open(url, '_self');
 }
 
 function getImageWidthHeight() {
@@ -742,6 +742,7 @@ function MakeJudge() {
         }
     }
 
+    clearTimeout(mytimer);
     setTimeout(showResult, 200);
 }
 
