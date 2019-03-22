@@ -3,7 +3,7 @@
 <html lang="en-US">
 
 <head>
-    <titlei18nid="translateId-cc3cf15e1ecc24ea945e34b48151bf20">The Gossip Problem</title>
+    <title class="toTranslate" i18nid="translateId-cc3cf15e1ecc24ea945e34b48151bf20">The Gossip Problem</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">   
     <link href="../contents/app.css" rel="stylesheet" />
     <script src="../contents/app.js" type="application/javascript"></script>
@@ -32,38 +32,38 @@
 
 <body bgcolor="#E6E6FA" onload="onLoad()" onresize="Reset()">
     <header class="container-fluid">
-        <h1i18nid="translateId-24962ef4bbb3bb07549315735e95ba3f">Gossip Problem</h1>
+        <h1 class="toTranslate" i18nid="translateId-24962ef4bbb3bb07549315735e95ba3f">Gossip Problem</h1>
     </header>
 
     <div class="container-fluid">
         <div class="row">
             <section class="col-sm-9">
                 <div class="row">
-                    <h4 i18nid="translateId-a56d7e1158484e176afc71458e56ea35"  class="col-sm-6     toTranslate">Talks done: <span id="Counter">0</span></h4>
-                    <h4 i18nid="translateId-547bb202806fd9e354788dda41c666bd"  class="col-sm-6     toTranslate">Time spent: <span id="HowLong">0</span> seconds</h4>
+                    <h4 i18nid="translateId-a56d7e1158484e176afc71458e56ea35"  class="col-sm-6   toTranslate">Talks done: <span id="Counter">0</span></h4>
+                    <h4 i18nid="translateId-547bb202806fd9e354788dda41c666bd"  class="col-sm-6   toTranslate">Time spent: <span id="HowLong">0</span> seconds</h4>
                 </div>
                 <p id="playarea"></p>
                 <div class="row">
-                    <a i18nid="translateId-1cdc076b28f70afac5fcedadf99fa119"  class="btn btn-primary btn-lg undo-fixed      toTranslate" onclick="Undo()">Undo</a>
-                    <a i18nid="translateId-8cf04a9734132302f96da8e113e80ce5"  class="btn btn-success  btn-lg done-fixed      toTranslate" onclick="ToHome()">Home</a>
+                    <a i18nid="translateId-1cdc076b28f70afac5fcedadf99fa119"  class="btn btn-primary btn-lg undo-fixed    toTranslate" onclick="Undo()">Undo</a>
+                    <a i18nid="translateId-8cf04a9734132302f96da8e113e80ce5"  class="btn btn-success  btn-lg done-fixed    toTranslate" onclick="ToHome()">Home</a>
                 </div>
 
             </section>
             <aside class="col-sm-3">
-                <h3 i18nid="translateId-dae8ace18bdcbcc6ae5aece263e14fe8"  class="title     toTranslate">Options</h3>
-                <pi18nid="translateId-f19314837b4e98397c7d7843dd4a35fa">Amount of Gossips:</p>
+                <h3 i18nid="translateId-dae8ace18bdcbcc6ae5aece263e14fe8"  class="title   toTranslate">Options</h3>
+                <p class="toTranslate" i18nid="translateId-f19314837b4e98397c7d7843dd4a35fa">Amount of Gossips:</p>
                 <div class="slidecontainer">
                     <input type="range" min="2" max="8" value="2" class="slider" id="myRange" onchange="updateSlider(this.value)">
                 </div>
 
-                <pi18nid="translateId-15bad1ef80c9455236e983218428cb58">Gossips: <span id="gossipnum">5</span></p>
+                <p class="toTranslate" i18nid="translateId-15bad1ef80c9455236e983218428cb58">Gossips: <span id="gossip_num">2</span></p>
 
-                <pi18nid="translateId-c8cb9e10efcc9b15131f9c3864a1a85a">Speed of solution:</p>
+                <p class="toTranslate" i18nid="translateId-c8cb9e10efcc9b15131f9c3864a1a85a">Speed of solution:</p>
                 <div class="slidecontainer">
                     <input type="range" min="50" max="5000" value="1000" class="slider" id="mysolution" onchange="updateSolutionSlider(this.value)">
                 </div>
 
-                <pi18nid="translateId-a2fb3edcc0e938b40055d3f865b5695d">Speed of solution: <span id="solutionspeed">5</span> ms</p>
+                <p class="toTranslate" i18nid="translateId-a2fb3edcc0e938b40055d3f865b5695d">Speed of solution: <span id="solutionspeed">5</span> ms</p>
 
                 Choose a character:
                 <select class="selectpicker" id="mySelect" onchange="UpdateActor()">
@@ -87,11 +87,11 @@
                 </audio>
 
                 <div class="btn-group_v">
-                    <button i18nid="translateId-c742c5a36b6307267bb709355feb2c41" type="button"                                class="btn btn-primary btn-lg     toTranslate" onclick="GetInstructions()">Instruction</button>
-                    <button i18nid="translateId-49b21ad0d38942f635877e7bbc5d7a1e" type="button"                                class="btn btn-primary btn-lg     toTranslate" onclick=Solution()>Solution</button>
-                    <button i18nid="translateId-def1521bd681a9ccc58b16c3c668cf4c" type="button"                                class="btn btn-primary btn-lg     toTranslate" onclick=SolutionExplanation()>Solution
+                    <button i18nid="translateId-c742c5a36b6307267bb709355feb2c41" type="button"        class="btn btn-primary btn-lg   toTranslate" onclick="GetInstructions()">Instruction</button>
+                    <button i18nid="translateId-49b21ad0d38942f635877e7bbc5d7a1e" type="button"        class="btn btn-primary btn-lg   toTranslate" onclick=Solution()>Solution</button>
+                    <button i18nid="translateId-def1521bd681a9ccc58b16c3c668cf4c" type="button"        class="btn btn-primary btn-lg   toTranslate" onclick=SolutionExplanation()>Solution
                         Explanation</button>
-                    <button i18nid="translateId-526d688f37a86d3c3f27d0c5016eb71d" type="button"                                class="btn btn-primary btn-lg     toTranslate" onclick="Reset()">Reset</button>
+                    <button i18nid="translateId-526d688f37a86d3c3f27d0c5016eb71d" type="button"        class="btn btn-primary btn-lg   toTranslate" onclick="Reset()">Reset</button>
                 </div>
 
 
