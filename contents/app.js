@@ -1,7 +1,3 @@
-//var googleapi = require('./googleapi.js');
-
-//import { i18nTranslate } from "./i18n.js"
-
 currentActor = "actor1.jpg";
 currentNumOfActor = 5;
 currentSolutionSpeed = 1000;
@@ -30,40 +26,37 @@ state = 0 //0: Reset 1: solution
 
 language = "en"
 
-function SetLanguage(lang)
-{
-    if( language == lang) {
+function SetLanguage(lang) {
+    if (language == lang) {
         return;
     }
 
     language = lang;
 
-    if(lang == 'en') {
-        location.reload();
-    } else { 
+    if (lang == 'en') {
+        url = 'index.html#' + language;
+        window.open(url);
+    } else {
         Localize();
     }
 }
 
-function StartGame()
-{
+function StartGame() {
     url = 'html/game.html#' + language;
     window.open(url);
 }
 
-function  getImageWidthHeight()
-{
+function getImageWidthHeight() {
     const element = document.querySelector('.actorimg');
     style = window.getComputedStyle(element, null);
-    console.log("style", style);  
+    console.log("style", style);
     imagewidth = parseInt(style.width);
     imageheight = parseInt(style.height);
     imagexoffset = imagewidth / 2;
     imageyoffset = imageheight / 2;
 }
 
-function setSolutionSpeed(SolutionSpeed)
-{
+function setSolutionSpeed(SolutionSpeed) {
     currentSolutionSpeed = SolutionSpeed
 }
 
@@ -83,7 +76,6 @@ function generateColorLabels() {
         lb.style.position = "relative";
         xoffset = 26 * (i + 1);
         lb.style.left = xoffset.toString() + "px";
-        //lb.style.top = "200px";
         document.body.appendChild(lb);
         labelElements.push(lb);
     }
@@ -157,27 +149,22 @@ function generateOne_TwoPositon(num, left, top, width, height, align = 0) {
         console.log(position);
         Positions.push(position)
     } else {
-        //////alert(((2);
         hw = width / 2;
         hh = height / 2;
         xo = getRandom(hw);
         xo += positionxoffset;
         yo = getRandom(hh);
-        //////alert(((xo);
-        //////alert(((yo);
         if (align == 0) {
             position = {
                 x: left + hw + xo,
                 y: top + yo
             };
             Positions.push(position);
-            //////alert((("ssss");
             position = {
                 x: left + xo,
                 y: top + hh + yo
             };
             Positions.push(position);
-            //////alert((("tttt");
         } else {
             position = {
                 x: left + xo,
@@ -275,13 +262,6 @@ function generateHTML(persons) {
         htmltext += "<img class = \"actorimg\" src = " + persons[i].image + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" " + "onmouseover='ShowChats(this.id)' onmouseout='HideChats(this.id)' ondragenter='DragEnter(event)' ondragleave='DragLeave(event)' ondragover='DragOver(event)' ondragexit='DragExit(event)' " + "/>"
         //htmltext += "<img class = \"actorimg\" src = " + persons[i].image  + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" />"
         htmltext += "<label class = \"actorlabel\" id = \"label_" + i + "\">1</label>";
-        /*
-        style = "\"position:absolute; left: " + Positions[i].x + "; top: " + Positions[i].y + "; width: 30; height: 40;\"";
-        style = "\" left: " + Positions[i].x + "; top: " + Positions[i].y + "; width: 30; height: 40;\"";
-        ////////alert(((style);
-        htmltext += "<img src = " + persons[i].image  + " style = " + style + " id = " + persons[i].name + "  draggable=\"true\"" + " ondragstart=\"drag(event)\"" + " ondrop=\"drop(event)\"  " + " ondragover=\"allowDrop(event)\" " +  "/>"
-        ////////alert(((htmltext);
-        */
     }
 
     return htmltext;
@@ -393,6 +373,7 @@ function Reset() {
     DisplayMessageGot();
 
     Localize();
+    updateGossipNum(num);
 }
 
 function fetchVideoAndPlay() {
@@ -423,7 +404,7 @@ function PlayMusic() {
 
 function onLoadHome() {
     var passhash = md5(language);
-    console.log("test md5 function:",passhash);
+    console.log("test md5 function:", passhash);
     console.log("Language:", language);
     language = window.location.hash;
     if (language == "") {
@@ -445,7 +426,7 @@ function onLoad() {
     Translate(language, "good morning");
 
     var passhash = md5(language);
-    console.log("test md5 function:",passhash);
+    console.log("test md5 function:", passhash);
     console.log("Language:", language);
     currentNumOfActor = parseInt(document.getElementById("myRange").value);
     updateGossipNum(currentNumOfActor);
@@ -457,7 +438,12 @@ function onLoad() {
 }
 
 function updateGossipNum(num) {
-    document.getElementById("gossipnum").innerHTML = num.toString();
+    //alert(num);
+    //alert(document.getElementById("gossip_num").innerHTML);
+    currentNumOfActor = parseInt(document.getElementById("myRange").value);
+    //alert(currentNumOfActor);
+    document.getElementById("gossip_num").textContent = currentNumOfActor.toString();
+    //alert(document.getElementById("gossip_num").textContent);
 }
 
 function updateSolutionSpeed(num) {
@@ -506,7 +492,7 @@ function createLineElement(x, y, length, angle, color) {
 function CreateLabelForChat(x, y) {
     console.log("label x/y/totalChat", x, y, totalChat);
     var lb = document.createElement("label");
-    var t = document.createTextNode("Talk" + (totalChat + 1).toString() + " ");
+    var t = document.createTextNode(_("Talk") + (totalChat + 1).toString() + " ");
     lb.appendChild(t);
     color = "red";
     if (totalChat < colors.length) {
@@ -610,8 +596,6 @@ function GetUnion(messageArr1, messageArr2) {
 }
 
 function UpdatePersonChat(srcpersonid, trgpersonid) {
-    //alert("UpdatePersonChat");
-    //AlertMessageGot();
     srcperson = getPersonIndex(srcpersonid);
     trgperson = getPersonIndex(trgpersonid);
 
@@ -619,60 +603,23 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     Persons[srcperson].history.push(Persons[srcperson].messagenum);
     Persons[trgperson].history.push(Persons[trgperson].messagenum);
 
-    
-    //console.log("trg-messageGot-before-push", Persons[trgperson].messageGotHistory)
-    //console.log("Persons[trgperson].messageGot", Persons[trgperson].messageGot);
+
     Persons[trgperson].messageGotHistory.push(Persons[trgperson].messageGot);
-    //console.log("trg-messageGot-after-push", Persons[trgperson].messageGotHistory)
-
-    //console.log("src-messageGot-before push", Persons[srcperson].messageGotHistory)
-    //console.log("Persons[srcperson].messageGot", Persons[srcperson].messageGot);
     Persons[srcperson].messageGotHistory.push(Persons[srcperson].messageGot);
-    //console.log("src-messageGot-after push", Persons[srcperson].messageGotHistory)
-    
-    
-    ////alert((Persons[srcperson].messageGotHistory);
-    ////alert((Persons[trgperson].messageGotHistory);
-
-    //if(false) {
-    //    messagenum = parseInt(Persons[srcperson].messagenum) + parseInt(Persons[trgperson].messagenum);
-    //} else 
-
     //messagenum = parseInt(Persons[srcperson].messagenum) + parseInt(Persons[trgperson].messagenum);
-    /*
-    {
-        //console.log(Persons[srcperson].messageGot);
-        //console.log(Persons[trgperson].messageGot);
-        //alert("UpdatePersonChat-1");
-        //AlertMessageGot();
-        union = GetUnion(Persons[srcperson].messageGot, Persons[trgperson].messageGot);
-        console.log(union);
-        //alert("UpdatePersonChat-2");
-        //AlertMessageGot();
-        //console.log(Persons[srcperson].messageGot);
-        //console.log(Persons[trgperson].messageGot);
-        //console.log("new message got", union);
-        messagenum = union.length;
-    }
-    */
-    
+
 
     //union = GetUnion(Persons[srcperson].messageGot, Persons[trgperson].messageGot);
-    
-    
+
+
     var union = Persons[srcperson].messageGot.concat(Persons[trgperson].messageGot.filter(function (item) {
         return Persons[srcperson].messageGot.indexOf(item) < 0;
     }));
-    
+
 
     console.log("uniuon", union);
-    //alert("UpdatePersonChat-2");
-    //AlertMessageGot();
-    //console.log(Persons[srcperson].messageGot);
-    //console.log(Persons[trgperson].messageGot);
-    //console.log("new message got", union);
     messagenum = union.length;
-    
+
 
     if (messagenum > currentNumOfActor) {
         messagenum = currentNumOfActor;
@@ -689,8 +636,8 @@ function UpdatePersonChat(srcpersonid, trgpersonid) {
     Persons[srcperson].chated.push(trgpersonid);
     Persons[trgperson].chated.push(srcpersonid);
 
-    union= []
-    
+    union = []
+
 }
 
 function AlreadyChatted(srcpersonid, trgpersonid) {
@@ -714,7 +661,6 @@ function AlreadyChatted(srcpersonid, trgpersonid) {
             //alert(("beep")
             return true;
         }
-
     }
 
     pair = {
@@ -726,9 +672,7 @@ function AlreadyChatted(srcpersonid, trgpersonid) {
 }
 
 function MakeAChat(src, trg) {
-    //alert("MakeAchat");
     console.log("AlreadyChatted");
-    //AlertMessageGot();
 
     srcRect = getElementRect(src);
     trgRect = getElementRect(trg);
@@ -743,8 +687,6 @@ function MakeAChat(src, trg) {
     lineElements.push(lineele);
 
     console.log("AlreadyChatted-1");
-    //    alert("UpdatePersonChat");
-    //    AlertMessageGot();
 
     UpdatePersonChat(src, trg);
     totalChat += 1;
@@ -753,30 +695,43 @@ function MakeAChat(src, trg) {
 
 }
 
+//Added format function for string
+String.prototype.format = function () {
+    var args = [].slice.call(arguments);
+    return this.replace(/(\{\d+\})/g, function (a) {
+        return args[+(a.substr(1, a.length - 2)) || 0];
+    });
+};
 
-function showResult()
-{
+
+function showResult() {
+    //alert("Show redult");
+    messid = 1;
     if (currentNumOfActor == 2) {
         if (totalChat > 2) {
-            alert("You are done, but not good enough!");
+            messid = 1;
         } else {
-            message = "Congratulations, you made it in " + Elapsed + " seconds!";
-            alert(message);
+            messid = 2;
         }
     } else if (currentNumOfActor == 3) {
         if (totalChat > 3) {
-            alert("You are done, But not good enough!");
+            messid = 1;
         } else {
-            message = "Congratulations, you made it in " + Elapsed + " seconds!";
-            alert(message);
+            messid = 2;
         }
     } else {
-        if (totalChat <= currentNumOfActor * 2 - 4) {
-            message = "Congratulations, you made it in " + Elapsed + " seconds!";
-            alert(message);
+        if (totalChat > currentNumOfActor * 2 - 4) {
+            messid = 1;
         } else {
-            alert("You are done, But not good enough!")
+            messid = 2;
         }
+    }
+
+    if (messid == 1) {
+        alert(_("You are done, But not good enough!"))
+    } else {
+        message = _("Congratulations, you made it in {0} seconds!").format(Elapsed);
+        alert(message);
     }
 }
 
@@ -822,17 +777,15 @@ function drop(ev) {
     }
 }
 
-function DelayedMakeAChat(delayed, src, trg)
-{
+function DelayedMakeAChat(delayed, src, trg) {
     console.log("DelayedMakeAChat", delayed);
     timid = setTimeout(MakeAChat, delayed, src, trg);
     timeidlist.push(timid);
 }
 
-function ClearAllTimers()
-{
+function ClearAllTimers() {
     clearTimeout(mytimer);
-    for(i = 0; i< timeidlist.length; i++) {
+    for (i = 0; i < timeidlist.length; i++) {
         clearTimeout(timeidlist[i]);
     }
     timeidlist = [];
@@ -861,7 +814,7 @@ function Solution() {
     }
 
 
-    for(i = 0; i < Persons.length; i++) {
+    for (i = 0; i < Persons.length; i++) {
         Persons[i].messageGot = [i];
         Persons[i].messageGotHistory = [];
         Persons[i].history = [];
@@ -876,7 +829,7 @@ function Solution() {
     Pairs = []
 
     offsetdelayed = parseInt(currentSolutionSpeed);
-    delayed = 300;  //offsetdelayed;    //1 * 1000;
+    delayed = 300; //offsetdelayed;    //1 * 1000;
 
     console.log("5555");
     console.log("currentNumOfActor", currentNumOfActor);
@@ -897,10 +850,10 @@ function Solution() {
             console.log("7777");
             for (i = currentNumOfActor - 1; i > 3; i--) {
                 console.log("8888", i);
-                
+
                 srcperson = "Person_" + i.toString();
                 trgperson = "Person_" + (i - 1).toString();
-                
+
                 DelayedMakeAChat(delayed, srcperson, trgperson);
                 delayed += offsetdelayed;
             }
@@ -920,7 +873,7 @@ function Solution() {
         delayed += offsetdelayed;
 
         console.log("AAAA");
-        
+
         if (currentNumOfActor > 4) {
             for (i = currentNumOfActor - 1; i > 3; i--) {
                 console.log("AAAA", i);
@@ -929,51 +882,12 @@ function Solution() {
                 delayed += offsetdelayed;
             }
         }
-        
+
         console.log("BBBB");
-
     }
 
 }
 
-function Verify() {
-    if(state == 1) {
-        alert("The answer is not yours!;)");
-        return;
-    }
-
-    for (i = 0; i < currentNumOfActor; i++) {
-        if (Persons[i].messagenum < currentNumOfActor) {
-            alert("Not finished, please continue!");
-            return;
-        }
-    }
-
-    clearTimeout(mytimer);
-
-    if (currentNumOfActor == 2) {
-        if (totalChat > 2) {
-            alert("Not good enough!");
-        } else {
-            message = "You made it in " + Elapsed + " seconds!";
-            alert(message);
-        }
-    } else if (currentNumOfActor == 3) {
-        if (totalChat > 3) {
-            alert("Not good enough!");
-        } else {
-            message = "You made it in " + Elapsed + " seconds!";
-            alert(message);
-        }
-    } else {
-        if (totalChat <= currentNumOfActor * 2 - 4) {
-            message = "You made it in " + Elapsed + " seconds!";
-            alert(message);
-        } else {
-            alert("Not good enough!")
-        }
-    }
-}
 
 function Undo() {
     if (totalChat == 0) {
@@ -1029,7 +943,6 @@ function playSound() {
 function basicPopup(url, width, height) {
     wh = 'width=' + width + ', height=' + height + ',';
     style = wh + 'left=100,top=100,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no,location=no';
-    //alert(style);
     popupWindow = window.open(url, 'popUpWindow', style);
 }
 
@@ -1047,15 +960,12 @@ function SolutionExplanation() {
 
 
 function GetInstructions() {
-    //return "<h1>Drag one person and drop on another person to complete a chat!</h1>";
     url = 'instruction.html#' + language;
     basicPopup(url, 1000, 750);
 }
 
 
-
 function ShowChats(personid) {
-    //return;
     index = getPersonIndex(personid);
 
     len = Persons[index].messageGot.length;
@@ -1078,7 +988,6 @@ function ShowChats(personid) {
 }
 
 function HideChats(persionid) {
-    //return;
     for (i = 0; i < chatedElements.length; i++) {
         element = chatedElements[i];
         element.parentNode.removeChild(element);
@@ -1093,14 +1002,14 @@ function DragEnter(event) {
     event.preventDefault();
     event.stopPropagation(); // stop it here to prevent it bubble up
 
-    event.target.style.border = "5px dotted red";    
+    event.target.style.border = "5px dotted red";
 }
 
 
 function DragLeave(event) {
     event.stopPropagation(); // stop it here to prevent it bubble up
 
-    event.target.style.border = "";    
+    event.target.style.border = "";
 }
 
 function DragOver(event) {
@@ -1113,8 +1022,7 @@ function DragExit(event) {
     event.stopPropagation(); // stop it here to prevent it bubble up
 }
 
-function Translate(language, text)
-{
+function Translate(language, text) {
     /*
     try {
         const res = translate(text, {from: 'en', to: language});
@@ -1122,13 +1030,12 @@ function Translate(language, text)
 
     }
     */
-   return i18nTranslate(language, text);
+    return i18nTranslate(language, text);
 }
 
 
-function GetLocalizedText(text)
-{
-    if (typeof(Storage) !== "undefined") {
+function GetLocalizedText(text) {
+    if (typeof (Storage) !== "undefined") {
         // Code for localStorage/sessionStorage.
         textmd5 = md5(text);
         lsname = language + '.' + textmd5;
@@ -1142,11 +1049,10 @@ function GetLocalizedText(text)
     } else {
         // Sorry! No Web Storage support..
         return text;
-    }    
+    }
 }
 
-function  ToHome()
-{
-    url = '../index.html#' + language; 
+function ToHome() {
+    url = '../index.html#' + language;
     window.open(url, '_self')
 }
