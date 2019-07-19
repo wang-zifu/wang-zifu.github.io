@@ -1,0 +1,31 @@
+#playArea{
+    width: 85%;
+    height: 520px;
+}
+
+#turnButton{
+    background-color: white;
+    border-radius: 5px;  
+
+    position: fixed;
+    top: 50px;
+    right: 10px;
+}
+
+#newGameButton{
+    background-color: white;
+    border-radius: 5px;  
+
+    position: fixed;
+    top: 200px;
+    right: 10px;
+}
+
+#tokens button{
+    border-radius: 5px;
+    border: 3px solid white;
+}
+
+#tokens button:hover{
+    border: 3px solid black;
+}
